@@ -3,6 +3,7 @@ import 'package:zoom_0720/UI/homepage.dart';
 import 'package:zoom_0720/UI/joinMeeting.dart';
 import 'package:zoom_0720/UI/meetings.dart';
 import 'package:zoom_0720/UI/settings.dart';
+import 'package:zoom_0720/UI/startMeeting.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +12,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return JoinMeetingPage();
+    return StartMeeting();
   }
 }
