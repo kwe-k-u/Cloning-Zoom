@@ -35,8 +35,15 @@ class _MeetingsPageState extends State<MeetingsPage> {
               child: Center(child: Text("Personal Meeting ID",)),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(child: Text("595959595", style: TextStyle(fontWeight: FontWeight.bold),)),
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Center(
+                  child: Text("595 959 595",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      fontSize: 18.0
+                    ),
+                  )
+              ),
             ),
 
             Row(
@@ -45,6 +52,13 @@ class _MeetingsPageState extends State<MeetingsPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: OutlineButton(
+                    splashColor: Colors.blueAccent,
+
+                    borderSide: BorderSide(
+                      color: Colors.blueAccent,
+
+                    ),
+                    textColor: Colors.blueAccent,
                     child: Text("Start"),
                     onPressed: (){
 
@@ -55,6 +69,11 @@ class _MeetingsPageState extends State<MeetingsPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: OutlineButton(
+                    splashColor: Colors.blueAccent,
+                    borderSide: BorderSide(
+                      color: Colors.blueAccent,
+                    ),
+                    textColor: Colors.blueAccent,
                     child: Text("Send invitation"),
                     onPressed: (){
 
@@ -65,6 +84,11 @@ class _MeetingsPageState extends State<MeetingsPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: OutlineButton(
+                    splashColor: Colors.blueAccent,
+                    borderSide: BorderSide(
+                      color: Colors.blueAccent,
+                    ),
+                    textColor: Colors.blueAccent,
                     child: Text("Invite"),
                     onPressed: (){
 

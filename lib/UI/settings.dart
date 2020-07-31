@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -11,7 +12,7 @@ class _SettingsPageState extends State<SettingsPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.white70,
+        backgroundColor: Colors.black12,
         appBar: AppBar(
           title: Text("Settings"),
           backgroundColor: Colors.black54,
@@ -29,57 +30,115 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: RichText(
                     text: TextSpan(
                         text: "Kweku Acquaye",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(
+                            color: Colors.black,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold
+                        ),
                         children: [
                           TextSpan(
-                              style: TextStyle(color: Colors.blueAccent,fontWeight: FontWeight.bold),
-                              text: "BASIC"
+                              style: TextStyle(
+                                  color: Colors.blueAccent,
+                                  fontWeight: FontWeight.bold,
+                                fontSize: 12.0
+                              ),
+                              text: "  BASIC"
                           )
                         ]
                     ),
                   ),
                   subtitle: Row(
                     children: <Widget>[
-                      Icon(Icons.videocam),
-                      Text("kwe***@ashesi.edu.gh",
+                      Container(
+                        padding: EdgeInsets.all(2.0),
+                        child: Icon(Icons.videocam,
+                          color: Colors.white,
+                          size: 16.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(6.0)
+
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4.0),
+                        child: Text("kwe***@ashesi.edu.gh",
+                        ),
                       ),
                     ],
                   ),
-                  leading: Icon(Icons.account_circle),
+                  leading: Container(
+                    padding: EdgeInsets.all(12.0),
+                    child: Text("KA",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0
+                    ),),
+                    decoration: BoxDecoration(
+                      color: Colors.pinkAccent,
+                      borderRadius: BorderRadius.circular(12.0),
+
+                    ),
+                  ),
                   trailing: Icon(Icons.chevron_right),
                 ),
               ),
             ),
 
+
             Padding(
-              padding: const EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
               child: Container(
+                padding: EdgeInsets.all(8.0),
                 color: Colors.white70,
-                child: ListTile(
-                  title: Text("Meeting"),
-                  trailing: Icon(Icons.chevron_right),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("Contacts"),
+                    Icon(Icons.chevron_right, color: Colors.grey,)
+                  ],
                 ),
               ),
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 16.0),
+          padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
+          child: Container(
+            padding: EdgeInsets.all(8.0),
+            color: Colors.white70,
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("Meeting"),
+                Icon(Icons.chevron_right, color: Colors.grey,)
+              ],
+            ),
+          ),
+        ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
               child: Container(
+                padding: EdgeInsets.all(8.0),
                 color: Colors.white70,
-                child: ListTile(
-                  title: Text("Chat"),
-                  trailing: Icon(Icons.chevron_right),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("Chat"),
+                    Icon(Icons.chevron_right, color: Colors.grey,)
+                  ],
                 ),
               ),
             ),
 
             Padding(
-              padding: const EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
               child: Container(
+                padding: EdgeInsets.all(8.0),
                 color: Colors.white70,
-                child: ListTile(
-                  title: Text("About"),
-                  trailing: Icon(Icons.chevron_right),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("About"),
+                    Icon(Icons.chevron_right, color: Colors.grey,)
+                  ],
                 ),
               ),
             ),

@@ -8,7 +8,25 @@ class ContactsHandler extends StatefulWidget {
 class _ContactsHandler extends State<ContactsHandler> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.black12,
+          title: Row(
+            children: <Widget>[
+
+            ],
+          ),
+        ),
+
+        body: Column(
+          children: <Widget>[
+
+          ],
+        ),
+      ),
+    );
   }
 }
 

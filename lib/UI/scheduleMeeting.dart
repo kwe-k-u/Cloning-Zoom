@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -7,19 +8,40 @@ class ScheduleMeeting extends StatefulWidget {
 }
 
 class _ScheduleMeetingState extends State<ScheduleMeeting> {
+  String fromTime = "10:00 pm", toTime = "10:30 pm", fromDate = "28/07/2020";
+  bool meetingBool = false, passwordBool = false,
+      hostBool = false, participantBool = false, calendarBool = false;
+  pickTime(String value){
+    setState(() {
+      fromTime = "22:22";
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.white70,
+        backgroundColor: Colors.grey.shade400,
         appBar: AppBar(
           backgroundColor: Colors.black54,
           centerTitle: true,
           title: Text("Schedule Meeting"),
-          leading: Center(child: Text("Cancel")),
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+              child: Center(
+                  child: Text("Cancel")
+              )
+          ),
           actions: <Widget>[
-            Center(child: Text("Done"))
+            FlatButton.icon(
+                onPressed: ()=> Navigator.pop(context),
+                icon: Text(""),
+                label: Text("Done", style: TextStyle(
+                  color: Colors.white
+                ),)
+            )
           ],
         ),
 
@@ -28,113 +50,300 @@ class _ScheduleMeetingState extends State<ScheduleMeeting> {
           child: Column(
             children: <Widget>[
 
-              TextField(
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(left: 8.0),
-                  hintText: "Kweku Acquaye's Zoom Meeting"
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Container(
+                  color: Colors.white,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(left: 8.0),
+                      hintText: "Kweku Acquaye's Zoom Meeting"
+                    ),
+                  ),
                 ),
               ),
 
-              ListTile(
-                leading: Text("Date"),
-                trailing: Icon(Icons.keyboard_arrow_right),
-                title: Text("date", textAlign: TextAlign.right,),
-              ),
 
-              ListTile(
-                leading: Text("From"),
-                trailing: Icon(Icons.keyboard_arrow_right),
-                title: Text("time", textAlign: TextAlign.right,),
-              ),
+              GestureDetector(
+                child: Container(
+                  color: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 20.0),
+                  child: Row(
+                    children: <Widget>[
+                      Text("Date"),
+                      Spacer(),
+                      Text("date", textAlign: TextAlign.right,),
+                      Icon(Icons.keyboard_arrow_right),
 
-              ListTile(
-                leading: Text("To"),
-                trailing: Icon(Icons.keyboard_arrow_right),
-                title: Text("time", textAlign: TextAlign.right,),
-              ),
+                    ],
+                  ),
+                ),
+                onTap: (){
+                  showDialog(context: context,
+                  child: Container(
+                    child: CalendarDatePicker(
 
-              ListTile(
-                leading: Text("Time Zone"),
-                trailing: Icon(Icons.keyboard_arrow_right),
-                title: Text("time zone", textAlign: TextAlign.right,),
-              ),
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000, 2, 1),
+                      lastDate: DateTime(2300, 2 , 2),
+                      onDateChanged: (newDate){
 
-              ListTile(
-                leading: Text("Repeat"),
-                trailing: Icon(Icons.keyboard_arrow_right),
-                title: Text("Never", textAlign: TextAlign.right,),
-              ),
-
-              SwitchListTile(
-                value: false,
-                onChanged: (value){
+                      },
+                    ),
+                  ) );
 
                 },
-                title: Text("Use Personal Meeting ID (PMI"),
-                subtitle: Text("987987987"),
               ),
 
               Container(
-                  color: Colors.black54,
-                  child: Text("Lots of text")
+                  color: Colors.white,
+                  child: Divider( thickness: 1.0,)
               ),
 
-              Text("PASSWORD", textAlign: TextAlign.left,),
 
-              SwitchListTile(
-                title: Text("Meeting Password"),
-                value: false,
-                onChanged: (value){
+              GestureDetector(
+                onTap: (){
+                  pickTime(fromTime);
                 },
+                child: Container(
+                  color: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 20.0),
+                  child: Row(
+                    children: <Widget>[
+                      Text("From"),
+                      Spacer(),
+                      Text(fromTime,
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                        color: Colors.grey
+                        ),
+                      ),
+                      Icon(Icons.keyboard_arrow_right),
+
+                    ],
+                  ),
+                ),
               ),
 
-              ListTile(
-                title: Text("Password"),
-                trailing: Text("654654654"),
-
+              Container(
+                  color: Colors.white,
+                  child: Divider( thickness: 1.0,)
               ),
 
-              Text("MEETING OPTIONS",
-              textAlign: TextAlign.left,),
 
-              SwitchListTile(
-                title: Text("Host Video On"),
-                value: false,
-                onChanged: (value){
-                },
-              ),
-
-              SwitchListTile(
-                title: Text("Participant Video On"),
-                value: false,
-                onChanged: (value){
-                },
-              ),
-
-              ListTile(
-                leading: Column(
+              Container(
+                color: Colors.white,
+                padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 20.0),
+                child: Row(
                   children: <Widget>[
-                    Text("Audio Option"),
-                    Text("United States")
+                    Text("To"),
+                    Spacer(),
+                    Text(toTime,
+                      textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: Colors.white
+                        ),
+                    ),
+                    Icon(Icons.keyboard_arrow_right),
+
                   ],
                 ),
-                title: Text("Telephone and Device audio", textAlign: TextAlign.right,),
-                trailing: Icon(Icons.keyboard_arrow_right),
               ),
 
-              Text("Advanced Options",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.blue,
 
+              Container(
+                  color: Colors.white,
+                  child: Divider( thickness: 1.0,)
               ),
-              ),
-              SwitchListTile(
-                title: Text("Add to Calendar"),
-                value: false,
-                onChanged: (value){
 
-                },
+
+              Container(
+                color: Colors.white,
+                padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 20.0),
+                child: Row(
+                  children: <Widget>[
+                    Text("Time Zone"),
+                    Spacer(),
+                    Text("GMT+0:00, Greenwich Mean Time",
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        color: Colors.grey
+                      ),
+                    ),
+                    Icon(Icons.keyboard_arrow_right,
+                    color: Colors.grey,),
+
+                  ],
+                ),
+              ),
+
+              Container(
+                  color: Colors.white,
+                  child: Divider( thickness: 1.0,)
+              ),
+
+
+              Container(
+                color: Colors.white,
+                padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 20.0),
+                child: Row(
+                  children: <Widget>[
+                    Text("Repeat"),
+                    Spacer(),
+                    Text("Never", textAlign: TextAlign.right,),
+                    Icon(Icons.keyboard_arrow_right),
+
+                  ],
+                ),
+              ),
+
+              Container(
+                  color: Colors.white,
+                  child: Divider( thickness: 1.0,)
+              ),
+
+              Container(
+                color: Colors.white,
+                child: SwitchListTile(
+                  value: meetingBool,
+                  onChanged: (value){
+                    setState(() {
+                      meetingBool = value;
+                    });
+                  },
+
+                  title: Text("Use Personal Meeting ID (PMI"),
+                  subtitle: Text("987987987"),
+                ),
+              ),
+
+              Container(
+                padding: EdgeInsets.all(12.0),
+                  child: Text(text)
+              ),
+
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: Text("PASSWORD", textAlign: TextAlign.left,),
+                  ),
+                ],
+              ),
+
+              Container(
+                color: Colors.white,
+                child: SwitchListTile(
+                  contentPadding: EdgeInsets.all(8.0),
+                  title: Text("Meeting Password"),
+                  value: passwordBool,
+                  onChanged: (value){
+                    setState(() {
+                      passwordBool = value;
+                    });
+                  },
+                ),
+              ),
+
+              Container(
+                child: Divider(thickness: 1.0,),
+                color: Colors.white,
+              ),
+
+
+              Container(
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+                  child: Row(
+                    children: <Widget>[
+                      Text("Password"),
+                      Spacer(),
+                      Text("654654654"),
+                    ],
+                  ),
+                )
+              ),
+
+              Container(
+                padding: EdgeInsets.all(12.0),
+                child: Text("MEETING OPTIONS",
+                textAlign: TextAlign.left,),
+              ),
+
+              Container(
+                color: Colors.white,
+                child: SwitchListTile(
+                  title: Text("Host Video On"),
+                  value: hostBool,
+                  onChanged: (value){
+                    setState(() {
+                      hostBool = value;
+                    });
+                  },
+                ),
+              ),
+
+              Container(
+                color: Colors.white,
+                child: SwitchListTile(
+                  title: Text("Participant Video On"),
+                  value: participantBool,
+                  onChanged: (value){
+                    setState(() {
+                      participantBool = value;
+                    });
+                  },
+                ),
+              ),
+
+              Container(
+                child: Divider(thickness: 1.0,),
+                color: Colors.white,
+              ),
+
+              Container(
+                color: Colors.white,
+                padding: EdgeInsets.all(12.0),
+                child: Row(
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Text("Audio Option"),
+                        Text("United States")
+                      ],
+                    ),
+
+                    Spacer(),
+                    Text("Telephone and Device audio", textAlign: TextAlign.right,),
+                    Icon(Icons.keyboard_arrow_right),
+                  ],
+                ),
+              ),
+
+              Container(
+                padding: EdgeInsets.all(12.0),
+                child: Text("Advanced Options",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.blue,
+
+                ),
+                ),
+              ),
+
+              Container(
+                color: Colors.white,
+                child: SwitchListTile(
+                  title: Text("Add to Calendar"),
+                  value: calendarBool,
+                  onChanged: (value){
+                    setState(() {
+                      calendarBool = value;
+                    });
+
+                  },
+                ),
               )
 
             ],
@@ -143,4 +352,6 @@ class _ScheduleMeetingState extends State<ScheduleMeeting> {
       ),
     );
   }
+  String text = "If this option is enabled, any meeting options that you change here will be"
+      " applied to all meetings that use your personal meeting ID";
 }

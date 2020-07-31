@@ -11,9 +11,12 @@ class _JoinMeetingPageState extends State<JoinMeetingPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.white70,
+        backgroundColor: Colors.grey.shade300,
         appBar: AppBar(
-          leading: Icon(Icons.arrow_back_ios),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios),
+            onPressed: ()=> Navigator.pop(context),
+          ),
           title: Text("Join a Meeting"),
           centerTitle: true,
           backgroundColor: Colors.black54,
@@ -22,33 +25,86 @@ class _JoinMeetingPageState extends State<JoinMeetingPage> {
         body: Column(
           children: <Widget>[
 
-            ListTile(
-              title: Center(child: Text("Meeting ID")),
-              trailing: Icon(Icons.keyboard_arrow_down),
+            Container(
+              color: Colors.white,
+              child: ListTile(
+                title: Text("Meeting ID",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                  color: Colors.grey
+                  ),
+                ),
+                trailing: Icon(Icons.keyboard_arrow_down),
+              ),
             ),
 
             Container(
-                child: Text("Join with a personal link name")
+              padding: EdgeInsets.all(12.0),
+                child: Center(
+                  child: Text("Join with a personal link name",
+                  style: TextStyle(
+                    color: Colors.blue.shade600
+                  ),
+                  ),
+                )
             ),
 
-            FlatButton(
-              color: Colors.grey,
-              onPressed: (){
+            Container(
+              color: Colors.white,
+                padding: EdgeInsets.all(12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text("Kweku Acquaye",
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold
+                    ),),
+                  ],
+                )
+            ),
 
-              },
-              child: Text("Join Meeting",
-                style: TextStyle(
+            Padding(
+              padding: const EdgeInsets.only(left: 28.0, right: 28.0, top: 8.0, bottom: 8.0),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: FlatButton(
+                      color: Colors.grey,
+                      onPressed: (){
 
-                ),
+                      },
+                      child: Text("Join Meeting",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
 
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("If you received an invitation link, tap on the link to join the meeting"),
+              child: Text("If you received an invitation link, tap on the link to join the meeting",
+              style: TextStyle(
+                color: Colors.grey.shade800
+              ),),
             ),
-            //todo align text to the left
-            Text("JOIN OPTIONS", textAlign: TextAlign.left,),
+
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text("JOIN OPTIONS",
+                    style: TextStyle(
+                      color: Colors.grey.shade600
+                    ),),
+                ),
+              ],
+            ),
 
             Container(
               color: Colors.white,

@@ -12,10 +12,6 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  int __currentIndex = 0;
-  List<Widget> pages = [
-
-  ];
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -37,26 +33,30 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: pages[__currentIndex],
+
         bottomNavigationBar: BottomNavigationBar(
             currentIndex: __currentIndex,
             onTap: _displayPage,
-            selectedItemColor: Theme.of(context).accentColor,
-            unselectedItemColor: Colors.grey,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            selectedItemColor: Colors.blue,
+            backgroundColor: Colors.white60,
             type: BottomNavigationBarType.fixed,
+
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.chat_bubble_outline),
+                  icon: Icon(Icons.chat_bubble),
                   title: Text('Meet & Chat')
               ),
+
               BottomNavigationBarItem(
                   icon: Icon(Icons.access_time),
                   title: Text('Meetings')
               ),
+
               BottomNavigationBarItem(
-                  icon: Icon(Icons.account_circle),
+                  icon: Icon(Icons.person_outline),
                   title: Text('Contacts')
               ),
+
               BottomNavigationBarItem(
                   icon: Icon(Icons.settings),
                   title: Text('Settings')
