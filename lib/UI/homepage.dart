@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zoom_0720/UI/joinMeeting.dart';
 import 'package:zoom_0720/UI/scheduleMeeting.dart';
+import 'package:zoom_0720/UI/shareScreen.dart';
 import 'package:zoom_0720/UI/startMeeting.dart';
 
 class Homepage extends StatefulWidget {
@@ -37,9 +38,10 @@ class _HomepageState extends State<Homepage> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0),
+                  borderRadius: BorderRadius.circular(8.0),
                   color: Colors.black12
                 ),
+
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: "Search",
@@ -138,7 +140,7 @@ class _HomepageState extends State<Homepage> {
                               color: Colors.white,),
                             onPressed: (){
                               Navigator.push(context, MaterialPageRoute(
-                                  builder: (context) => null
+                                  builder: (context) => ShareScreenPage()
                               ));
                             },
                           ),
