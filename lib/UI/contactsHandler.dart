@@ -10,23 +10,26 @@ class _ContactsHandler extends State<ContactsHandler> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+      home: DefaultTabController(
+        length: 2,
+        initialIndex: 0,
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.grey.shade800,
+            title: TabBar(
+              tabs: <Widget>[
+                Tab(text: "Contacts",),
+                Tab(text: "Channels",),
+              ],
+            ),
+          ),
+          body: TabBarView(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Tab(text: "Contacts",),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Tab(text: "Channels",),
-              ),
+              contacts(),
+              channels()
             ],
           ),
         ),
-        body: contacts(),
       )
     );
   }
