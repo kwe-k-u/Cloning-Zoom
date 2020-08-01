@@ -201,7 +201,7 @@ class _HomepageState extends State<Homepage> {
                     leading:
                     Container(
                       padding: EdgeInsets.all(12.0),
-                      child: Text("MO", //todo replace with image
+                      child: Text("MO",
                         style: TextStyle(
                           color: Colors.white
                       ),),

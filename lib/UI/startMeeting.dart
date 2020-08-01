@@ -6,6 +6,9 @@ class StartMeeting extends StatefulWidget {
 }
 
 class _StartMeetingState extends State<StartMeeting> {
+
+  bool videoBool = false, meetingBool = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,8 +37,12 @@ class _StartMeetingState extends State<StartMeeting> {
                 color: Colors.white,
                 child: SwitchListTile(
                   title: Text("Video On"),
-                  value: false,
-                  onChanged: (value){}
+                  value: videoBool,
+                  onChanged: (value){
+                    setState(() {
+                      videoBool = value;
+                    });
+                  }
 
                 ),
               ),
@@ -44,8 +51,12 @@ class _StartMeetingState extends State<StartMeeting> {
                 child: SwitchListTile(
                   title: Text("Use Personal Meeting ID"),
                   subtitle: Text("589 985 654"),
-                  value: false,
-                  onChanged: (value){}
+                  value: meetingBool,
+                  onChanged: (value){
+                    setState(() {
+                      meetingBool = value;
+                    });
+                  }
 
                 ),
               ),

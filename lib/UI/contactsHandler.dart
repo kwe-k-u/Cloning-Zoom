@@ -15,6 +15,10 @@ class _ContactsHandler extends State<ContactsHandler> {
         initialIndex: 0,
         child: Scaffold(
           appBar: AppBar(
+            actions: <Widget>[
+               Icon(Icons.add),
+              
+            ],
             backgroundColor: Colors.grey.shade800,
             title: TabBar(
               tabs: <Widget>[
@@ -180,23 +184,3 @@ class _ContactsHandler extends State<ContactsHandler> {
     );
   }
 }
-
-
-//DefaultTabController(
-//length: 2,
-//initialIndex: 0,
-//child: Scaffold(
-//appBar: TabBar(tabs: [
-//Tab(
-//text: "Contact",
-//),
-//Tab(
-//text: "Channel",)
-//]),
-//body: TabController(
-//
-//),
-//),
-//)
-
-

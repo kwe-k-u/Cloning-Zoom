@@ -6,6 +6,8 @@ class JoinMeetingPage extends StatefulWidget {
 }
 
 class _JoinMeetingPageState extends State<JoinMeetingPage> {
+
+  bool audioBool = false, videoBool = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -113,20 +115,24 @@ class _JoinMeetingPageState extends State<JoinMeetingPage> {
 
                   SwitchListTile(
                     onChanged: (value){
-
+                      setState(() {
+                        audioBool = value;
+                      });
                     },
-                    title: Text("Don't connect to Audio"),
-                    value: false,
+                    title: Text("Don't Connect To Audio"),
+                    value: audioBool,
                   ),
                   Divider(
                     thickness: 2.0,
                   ),
                   SwitchListTile(
                     onChanged: (value){
-
+                      setState(() {
+                        videoBool = value;
+                      });
                     },
-                    title: Text("Don't connect to Audio"),
-                    value: false,
+                    title: Text("Turn Off My Video"),
+                    value: videoBool,
                   )
                 ],
               ),

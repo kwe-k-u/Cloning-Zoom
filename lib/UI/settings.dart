@@ -143,7 +143,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
 
-            //todo include copyright symbol
+
             Padding(
               padding: const EdgeInsets.only(top: 12.0),
               child: Text("Copyright 2012 - 2020 Zoom Communications Inc. All rights reserved",

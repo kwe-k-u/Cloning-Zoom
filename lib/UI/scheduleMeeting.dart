@@ -8,13 +8,18 @@ class ScheduleMeeting extends StatefulWidget {
 }
 
 class _ScheduleMeetingState extends State<ScheduleMeeting> {
-  String fromTime = "10:00 pm", toTime = "10:30 pm", fromDate = "28/07/2020";
+  String fromTime = "10:00 pm", toTime = "10:30 pm", fromDate = "28-07-2020";
   bool meetingBool = false, passwordBool = false,
       hostBool = false, participantBool = false, calendarBool = false;
   pickTime(String value){
-    setState(() {
-      fromTime = "22:22";
-    });
+
+    showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now(),
+
+    );
+
+
   }
   @override
   Widget build(BuildContext context) {
@@ -72,7 +77,7 @@ class _ScheduleMeetingState extends State<ScheduleMeeting> {
                     children: <Widget>[
                       Text("Date"),
                       Spacer(),
-                      Text("date", textAlign: TextAlign.right,),
+                      Text(fromDate, textAlign: TextAlign.right,),
                       Icon(Icons.keyboard_arrow_right),
 
                     ],
@@ -80,17 +85,21 @@ class _ScheduleMeetingState extends State<ScheduleMeeting> {
                 ),
                 onTap: (){
                   showDialog(context: context,
-                  child: Container(
-                    child: CalendarDatePicker(
-
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2000, 2, 1),
-                      lastDate: DateTime(2300, 2 , 2),
-                      onDateChanged: (newDate){
-
-                      },
-                    ),
-                  ) );
+                  builder: (BuildContext context) {
+                    return Dialog(
+                      child: CalendarDatePicker(
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2000, 02, 02),
+                        lastDate: DateTime(2040, 02, 02),
+                        onDateChanged: (date){
+                          setState(() {
+                            fromDate = date.toString().split(" ").elementAt(0);
+                          });
+                        },
+                      ),
+                    );
+                  }
+                    );
 
                 },
               ),
@@ -131,22 +140,25 @@ class _ScheduleMeetingState extends State<ScheduleMeeting> {
               ),
 
 
-              Container(
-                color: Colors.white,
-                padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 20.0),
-                child: Row(
-                  children: <Widget>[
-                    Text("To"),
-                    Spacer(),
-                    Text(toTime,
-                      textAlign: TextAlign.right,
-                        style: TextStyle(
-                          color: Colors.white
-                        ),
-                    ),
-                    Icon(Icons.keyboard_arrow_right),
+              GestureDetector(
+                onTap: (){pickTime(toTime);},
+                child: Container(
+                  color: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 20.0),
+                  child: Row(
+                    children: <Widget>[
+                      Text("To"),
+                      Spacer(),
+                      Text(toTime,
+                        textAlign: TextAlign.right,
+                          style: TextStyle(
+                            color: Colors.grey
+                          ),
+                      ),
+                      Icon(Icons.keyboard_arrow_right),
 
-                  ],
+                    ],
+                  ),
                 ),
               ),
 
